@@ -71,12 +71,12 @@ public class Panel extends JPanel implements ActionListener {
         if(flag){
 
             // Creating graphic for  the food Particle
-            graphic.setColor(new Color(227, 9, 9));
+            graphic.setColor(new Color(241, 12, 12, 255));
             graphic.fillOval(fx, fy, unit,unit);
 
             // creating a snake!
             for (int i = 0; i < length; i++) {
-                graphic.setColor(new Color(42, 227, 42));
+                graphic.setColor(new Color(45, 231, 17));
                 graphic.fillOval(xsnake[i], ysnake[i], unit, unit);
             }
 
