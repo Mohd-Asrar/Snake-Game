@@ -2,18 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.awt.event.KeyAdapter;
-//import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.Random;
-//import java.util.Arrays;
+
 public class Panel extends JPanel implements ActionListener {
 
-    static int width = 500;
-    static int height = 300;
-    static  int unit = 25;
+    static int width = 600;
+    static int height = 600;
+    static  int unit = 30;
 
     Random random;
 
@@ -48,7 +46,7 @@ public class Panel extends JPanel implements ActionListener {
     public void gameStart(){
         flag=true;
         spawnfood();
-        timer = new Timer(160, this);
+        timer = new Timer(130, this);
         timer.start();
 
     }
@@ -68,6 +66,15 @@ public class Panel extends JPanel implements ActionListener {
     }
 
     public void draw(Graphics graphic){
+
+
+        // We Create a grid(Matrix shape to visualise where food appear every time and where to where snake moving and how many space we have in screen)
+        for (int i = 0; i < height/unit; i++) {
+            graphic.drawLine(i*unit,0,i*unit, height);
+            graphic.drawLine(0,i*unit,width, i*unit);
+        }
+
+
         if(flag){
 
             // Creating graphic for  the food Particle
@@ -76,8 +83,14 @@ public class Panel extends JPanel implements ActionListener {
 
             // creating a snake!
             for (int i = 0; i < length; i++) {
-                graphic.setColor(new Color(45, 231, 17));
-                graphic.fillOval(xsnake[i], ysnake[i], unit, unit);
+                if(i==0){
+                    graphic.setColor(new Color(45, 231, 17));
+                    graphic.fillOval(xsnake[i], ysnake[i], unit, unit);
+                }else {
+                    graphic.setColor(new Color(239, 6, 6));
+                    graphic.fillOval(xsnake[i], ysnake[i], unit, unit);
+                }
+
             }
 
 
@@ -130,8 +143,9 @@ public class Panel extends JPanel implements ActionListener {
 
         for (int i = length-1; i >0 ; i--) {
 
-            if((xsnake[0]==xsnake[i] && ysnake[0]== ysnake[i])){
-                flag=false;
+            if ((xsnake[0] == xsnake[i] && ysnake[0] == ysnake[i])) {
+                flag = false;
+
             }
         }
         
