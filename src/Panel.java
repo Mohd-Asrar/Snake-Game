@@ -57,6 +57,7 @@ public class Panel extends JPanel implements ActionListener {
     public void spawnfood(){
         fx = random.nextInt(width/unit)*unit;
         fy = random.nextInt(height/unit)*unit;
+
     }
 
     // use for creating graphics like food snake etc
@@ -69,10 +70,10 @@ public class Panel extends JPanel implements ActionListener {
 
 
         // We Create a grid(Matrix shape to visualise where food appear every time and where to where snake moving and how many space we have in screen)
-        for (int i = 0; i < height/unit; i++) {
-            graphic.drawLine(i*unit,0,i*unit, height);
-            graphic.drawLine(0,i*unit,width, i*unit);
-        }
+//        for (int i = 0; i < height/unit; i++) {
+//            graphic.drawLine(i*unit,0,i*unit, height);
+//            graphic.drawLine(0,i*unit,width, i*unit);
+//        }
 
 
         if(flag){
@@ -87,7 +88,8 @@ public class Panel extends JPanel implements ActionListener {
                     graphic.setColor(new Color(45, 231, 17));
                     graphic.fillOval(xsnake[i], ysnake[i], unit, unit);
                 }else {
-                    graphic.setColor(new Color(239, 6, 6));
+//                    graphic.setColor(new Color(239, 6, 6));
+                    graphic.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
                     graphic.fillOval(xsnake[i], ysnake[i], unit, unit);
                 }
 
